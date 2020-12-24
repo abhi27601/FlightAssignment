@@ -1,0 +1,13 @@
+.ellipsescontent {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.flex {
+    flex-direction: row;
+}
+
+.setmaxwidth {
+    max-width: 80%
+   // flex-basis:80%
+}

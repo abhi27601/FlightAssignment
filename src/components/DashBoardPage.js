@@ -1,11 +1,18 @@
 import React from "react";
+import  FlightsCards from "./FlightsCards";
+import Navigation from "./Navigation";
 const DashBoardPage = () => (
-  <div>
-      DashBoardPage content
-  </div>
+ 
+   <>
+      <div className = 'container-fluid d-md-flex'>
+
+
+<Navigation />
+     <FlightsCards />
+     </div>
+   </>
 
 
 );
-console.log("Gauri");
 
 export default DashBoardPage;
