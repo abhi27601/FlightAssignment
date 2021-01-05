@@ -7,8 +7,11 @@ Did filtering at client side.
 Added some tests using jest and enzyme.
 Used webpack to build the files for production and dev env.
 server js is used to serve the dist.
-
-
+Run yarn install
+dev build: yarn start2
+prod build : yarn build
+start server: yarn start
+Run Tests: yarn test
 
 
 
