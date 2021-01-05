@@ -5,10 +5,11 @@ const DashBoardPage = () => (
  
    <>
       <div className = 'container-fluid d-md-flex'>
-
-
-<Navigation />
-     <FlightsCards />
+      <div className="row p-4">
+      <Navigation />
+      <FlightsCards />
+     
+      </div>
      </div>
    </>
 

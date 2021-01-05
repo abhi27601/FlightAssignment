@@ -15,4 +15,9 @@ export const setLaunchYear = (launch_years = []) => ({
     type: "SET_SUCCESSFUL_LANDING",
     successful_landing
   });
+  export const setRemoveFilters = () => ({
+    type: "REMOVE_SUCESSFUL_LAUNCH",
+    
+  });
+  
   

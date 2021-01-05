@@ -9,7 +9,7 @@ export const Header = ({ startLogout }) => (
       <div className="header__content">
         {/* <NavLink to='/' activeClassName = 'is-active' exact = {true} >DashBoardPage</NavLink> */}
         <Link className="header__title" to="/dashboard">
-          <h1>BoilerPlate</h1>
+          <h1>SpaceX Launch Programs</h1>
         </Link>
 
         {/*<NavLink to='/edit' activeClassName = 'is-active'>Edit Expense</NavLink> */}

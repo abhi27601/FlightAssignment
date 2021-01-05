@@ -13,7 +13,7 @@ beforeEach(() => {
 test('should render Header correctly', () => {
    
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('h1').text()).toBe('BoilerPlate');
+    expect(wrapper.find('h1').text()).toBe('SpaceX Launch Programs');
 })
 
 test('should render Header correctly when clicked logout', () => {

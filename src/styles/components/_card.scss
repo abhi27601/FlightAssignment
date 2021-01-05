@@ -2,12 +2,56 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-.flex {
-    flex-direction: row;
+    background-color: #fff;
 }
 
 .setmaxwidth {
-    max-width: 80%
+  
+   justify-content: center;
+   /* @media(min-width: $desktop-breakpoint) {
+        max-width: 80%
+        }*/
    // flex-basis:80%
 }
+
+/*.card {
+   // margin:0 0 0 $s-size
+}*/
+.cardtitle {
+    margin:0 auto;
+    text-decoration:underline;
+    text-align: center;
+}
+.card__align {
+    padding:$m-size;
+
+    img {
+        background-color: rgb(245, 239, 239);
+    }
+}
+.footerdiv{
+    font-weight: 700;
+    text-align: center;
+    
+}
+
+.centeralign {
+    // desktop styles
+    @media(max-width: $desktop-breakpoint - .01rem){
+       margin:$s-size auto //mobile styles
+       
+    }
+}
+
+
+/*.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $s-size;
+    
+    @media(min-width: $desktop-breakpoint) {
+    margin-bottom: $l-size;
+    flex-direction: row;
+    }
+    
+}*/

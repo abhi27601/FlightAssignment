@@ -1,7 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render expensedahboard page 1`] = `
-<div>
-  DashBoardPage content
-</div>
+<Fragment>
+  <div
+    className="container-fluid d-md-flex"
+  >
+    <div
+      className="row p-4"
+    >
+      <Connect(Navigation) />
+      <Connect(FlightsCards) />
+    </div>
+  </div>
+</Fragment>
 `;

@@ -1,4 +1,5 @@
 import moment from "moment";
+import { handleCheckChieldElement,handleCheckRadioElement,handleCheckRadioElementLand } from "../components/Navigation";
 const filtersDefaultState = {
   launch_years: [],
   successful_launch:[],
@@ -20,6 +21,12 @@ export default (state = filtersDefaultState, action) => {
         ...state,
         successful_landing:action.successful_landing.filter((successful_landing) => successful_landing.isChecked == true)
       }
+      case "REMOVE_SUCESSFUL_LAUNCH":
+        
+        return filtersDefaultState
+         
+          
+      
     default:
       return state;
   }

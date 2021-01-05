@@ -11,16 +11,18 @@ label.check input {
 }
 
 label.check span {
-    padding: 7px 14px;
-    border: 2px solid #8f37aa;
+    padding: 5px 5px;
+    border: 2px solid $green;
     display: inline-block;
-    color: #8f37aa;
+    text-align: center;
+    color: $light-grey;
     border-radius: 3px;
+    background-color: $green;
     text-transform: uppercase
 }
 
 label.check input:checked+span {
-    border-color: #8f37aa;
-    background-color: #8f37aa;
+    border-color: $green;
+    background-color: darken($green,20%);
     color: #fff
 }

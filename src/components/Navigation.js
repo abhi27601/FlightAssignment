@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Checkbox from "./Checkbox";
 import Radiobox from "./Radiobox";
 import getVisibleFlights from "../selectors/getVisibleFlights";
-import { setLaunchYear, setSuccessfulLanding , setSuccessfulLaunch } from "../actions/filters";
+import { setLaunchYear, setSuccessfulLanding , setSuccessfulLaunch,setRemoveFilters } from "../actions/filters";
 
 export class Navigation extends React.Component {
   state = {
@@ -25,17 +25,61 @@ export class Navigation extends React.Component {
       {id: 15, value: "2020", isChecked: false},
     ],
     launch_success:[
-    {id: 16, value: "true", isChecked: true},
+    {id: 16, value: "true", isChecked: false},
     {id: 17, value: "false", isChecked: false},
   ],
-    land_success:[ {id: 18, value: "true", isChecked: true},
+    land_success:[ {id: 18, value: "true", isChecked: false},
     {id: 19, value: "false", isChecked: false}
   ]
   };
   componentDidMount(prevprops,prevstate) {
-    this.props.setLaunchYear(this.state.launch_years);
-    this.props.setSuccessfulLaunch(this.state.launch_success);
-    this.props.setSuccessfulLanding(this.state.land_success);
+    try {
+      const json_land_success = localStorage.getItem('json_land_success');
+      
+      const json_launch_success = localStorage.getItem('json_launch_success');
+     
+      const json_launch_years = localStorage.getItem('json_launch_years');
+      
+        if(json_land_success.length == 0 && json_launch_success.length == 0 && json_launch_years == 0){
+        }
+        else{
+          if(JSON.parse(json_land_success)){
+            const land_success = JSON.parse(json_land_success);
+            this.setState(() => ({ land_success }));
+            this.props.setSuccessfulLanding(this.state.land_success);
+          }
+          
+          if(JSON.parse(json_launch_success)){
+            const launch_success = JSON.parse(json_launch_success);
+            this.setState(() => ({ launch_success }));
+            this.props.setSuccessfulLaunch(this.state.launch_success);
+          }
+          
+          if(JSON.parse(json_launch_years)){
+            const launch_years = JSON.parse(json_launch_years);
+            this.setState(() => ({launch_years}));
+            this.props.setLaunchYear(launch_years);
+          }
+
+        } 
+          
+        
+       
+      
+    } catch (e) {
+      // Do nothing at all
+    }
+    
+  }
+  componentDidUpdate(prevProps, prevState) {
+  
+    const json_launch_years = JSON.stringify(this.state.launch_years);
+      localStorage.setItem('json_launch_years', json_launch_years);
+    const json_launch_success = JSON.stringify(this.state.launch_success);
+      localStorage.setItem('json_launch_success', json_launch_success);
+    const json_land_success = JSON.stringify(this.state.land_success);
+      localStorage.setItem('json_land_success', json_land_success);
+  
   }
   handleCheckChieldElement = (event) => {
     let launch_years = this.state.launch_years
@@ -44,20 +88,19 @@ export class Navigation extends React.Component {
        launch_year.isChecked =  event.target.checked
     })
     this.setState((prevState) => ({launch_years}))
-    console.log(this.state.launch_years);
     this.props.setLaunchYear(this.state.launch_years);
+
   }
   
   handleCheckRadioElement = (event) => {
     let launch_success = this.state.launch_success
     launch_success.forEach(launch_success => {
-      console.log(event.target);
-      console.log(event.target.checked);
+     
        if (launch_success.value === event.target.value){
         launch_success.isChecked =  event.target.checked
        }
        else {
-        launch_success.isChecked = !launch_success.isChecked;
+        launch_success.isChecked = !event.target.checked;
        }
        
     })
@@ -81,48 +124,64 @@ export class Navigation extends React.Component {
         land_success.isChecked =  event.target.checked
        }
        else{
-        land_success.isChecked = !land_success.isChecked;
+        land_success.isChecked = !event.target.checked;
        }
       
     })
     this.setState({land_success});
-    console.log(land_success);
+   
     this.props.setSuccessfulLanding(this.state.land_success);
   }
 
-  /*handleCheckRadioElement = (event) => {
-    let launch_success = this.state.launch_success
-    launch_success.forEach(launch_success => {
-       if (launch_success.value === event.target.value)
-       launch_success.isChecked =  event.target.checked
-    })
-    this.setState({launch_success})
-  }*/
-
+  setRemoveFilters = (e) => {
+    
+    console.log(this.state);
+   this.setState((prevState,prevProps)=> 
+            {
+              prevState.launch_years.forEach(element => {
+                element.isChecked=false
+              });
+              prevState.launch_success.forEach(element => {
+                element.isChecked=false
+              });
+              prevState.land_success.forEach(element => {
+                element.isChecked=false
+              });
+             
+            })
+    
+    this.props.setRemoveFilters()
+  }
 
   render() {
     return (
-      <div className="row p-4">
-        <div className="col">
+     
+        <div className="col-sm-3">
           <p className="card-header">Filters</p>
           <div className="card">
             <div className="row-cols-2 mb-4">
               
-              
-              <h5 className="card-title">Launch year</h5>
+             
+              <div className='cardtitle'> <p className="card-title">Launch year</p> </div> 
               {
                 this.state.launch_years.map((launch_year) => {
-                return <Checkbox key= {launch_year.id} handleCheckChieldElement={this.handleCheckChieldElement}  {...launch_year} />;
+                return <Checkbox key={launch_year.id} handleCheckChieldElement={this.handleCheckChieldElement}  {...launch_year} />;
               })
               }
-              <h5 className="card-title">Successful Launch</h5>
+              
+             
+             
+             <div className='cardtitle'><p className="card-title">Successful Launch</p></div> 
+              
              {
              
                 this.state.launch_success.map((launch_success) => {
                 return <Radiobox key= {launch_success.id} handleCheckRadioElement={this.handleCheckRadioElement}  {...launch_success} radioname={`launch_success`}/>;
               })
              }
-             <h5 className="card-title">Successful Land</h5>
+             
+            <div className='cardtitle'><p className="card-title">Successful Land</p></div>
+             
               {
               
                this.state.land_success.map((land_success) => {
@@ -132,11 +191,10 @@ export class Navigation extends React.Component {
               }
              
             </div>
-              
-
+            <div className='wrapbutton'> <button className='button button--secondary' onClick={this.setRemoveFilters}>Remove </button></div>
           </div>
         </div>
-      </div>
+      
     );
   }
 }
@@ -147,10 +205,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch, props) => ({
   setLaunchYear: (launch_years) => dispatch(setLaunchYear(launch_years)),
   setSuccessfulLaunch:(launch_success) => dispatch(setSuccessfulLaunch(launch_success)),
-  setSuccessfulLanding:(land_success) => dispatch(setSuccessfulLanding(land_success))
- // sortByDate: () => dispatch(sortByDate()),
-  //sortByAmount: () => dispatch(sortByAmount()),
-  //setStartDate: (startDate) => dispatch(setStartDate(startDate)),
-  //setEndDate: (endDate) => dispatch(setEndDate(endDate)),
+  setSuccessfulLanding:(land_success) => dispatch(setSuccessfulLanding(land_success)),
+  setRemoveFilters:() => dispatch(setRemoveFilters())
+ 
 });
+
+
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

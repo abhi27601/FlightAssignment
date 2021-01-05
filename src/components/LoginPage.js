@@ -16,8 +16,8 @@ export class LoginPage extends React.Component {
 export const LoginPage = ({ startLogin }) => (
   <div className="box-layout">
     <div className="box_layout__box">
-      <h1 className="box-layout__title">BoilerPlate</h1>
-      <p>Tag Line for App</p>
+      <h1 className="box-layout__title">Flights</h1>
+      <p>Flights App</p>
       <button className="button" onClick={startLogin}>
         Login With Google
       </button>

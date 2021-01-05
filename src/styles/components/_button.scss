@@ -1,13 +1,14 @@
 .button {
   background: $blue;
-  color: white;
-  border: none;
+  color: $green;
+  border: 1px solid $green;
   font-size: $font-size-large;
   font-weight: 300;
   padding: $s-size;
   display: inline-block;
   text-decoration: none;
   line-height: 1;
+  cursor: pointer;
 }
 
 .button--link {
@@ -15,5 +16,11 @@
 }
 
 .button--secondary {
+  color:white;
   background: $disabled-grey;
+  
+}
+
+.wrapbutton {
+  align-self: center;
 }
