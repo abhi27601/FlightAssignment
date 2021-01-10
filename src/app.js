@@ -10,8 +10,6 @@ import { startSetFlights } from "./actions/flights";
 import '../node_modules/normalize.css';
 import '../node_modules/bootstrap/scss/bootstrap.scss';
 import './styles/styles.scss';
-
-import 'react-dates/lib/css/_datepicker.css'
 import LoadingPage from "./components/LoadingPage";
 const store = configureStore();
 store.subscribe(()=>{
