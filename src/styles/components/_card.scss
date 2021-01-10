@@ -3,20 +3,17 @@
     overflow: hidden;
     text-overflow: ellipsis;
     background-color: #fff;
+    font-weight: 700;
+   
+}
+.textcolor {
+    color:$blueforvalue;
 }
 
 .setmaxwidth {
-  
    justify-content: center;
-   /* @media(min-width: $desktop-breakpoint) {
-        max-width: 80%
-        }*/
-   // flex-basis:80%
 }
 
-/*.card {
-   // margin:0 0 0 $s-size
-}*/
 .cardtitle {
     margin:0 auto;
     text-decoration:underline;
@@ -37,21 +34,11 @@
 
 .centeralign {
     // desktop styles
+    margin:none;
     @media(max-width: $desktop-breakpoint - .01rem){
-       margin:$s-size auto //mobile styles
+       margin:$s-size $s-size //mobile styles
        
     }
 }
 
 
-/*.input-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: $s-size;
-    
-    @media(min-width: $desktop-breakpoint) {
-    margin-bottom: $l-size;
-    flex-direction: row;
-    }
-    
-}*/

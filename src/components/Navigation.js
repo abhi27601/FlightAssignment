@@ -82,11 +82,18 @@ export class Navigation extends React.Component {
   
   }
   handleCheckChieldElement = (event) => {
+    
     let launch_years = this.state.launch_years
     launch_years.forEach(launch_year => {
        if (launch_year.value === event.target.value)
        launch_year.isChecked =  event.target.checked
     })
+    //this.props.history.push({
+      //pathname: pathname,
+      //search: searchParams.toString(),
+    //});
+    const selectedlaunch_year = launch_years.filter((launch_year) => launch_year.isChecked == true).map((sel) => sel.value)
+    
     this.setState((prevState) => ({launch_years}))
     this.props.setLaunchYear(this.state.launch_years);
 
@@ -104,12 +111,29 @@ export class Navigation extends React.Component {
        }
        
     })
+
     
    /* let land_success = this.state.land_success
     land_success.forEach(land_success => {
        if (land_success.value === event.target.value)
        land_success.isChecked =  event.target.checked
     })*/
+    /*
+    let searchParams = new URLSearchParams(location.search);
+    let pathname = location.pathname;
+    const selectedlaunch_success = launch_success.filter((launch_success) => launch_success.isChecked == true).map((sel) => sel.value);
+    searchParams.set("launch_success", selectedlaunch_success );
+    console.log(searchParams);
+    console.log(pathname);
+    console.log(this.props);
+    //history.replaceState(null, "", "?" + searchParams + location.hash);
+    
+    this.props.history.push({
+      pathname: pathname,
+      search: {successful_launch:searchParams.get('launch_success')},
+    });*/
+    console.log(this.props);
+    
     this.setState({launch_success})
     console.log(this.state.launch_success)
     this.props.setSuccessfulLaunch(this.state.launch_success);

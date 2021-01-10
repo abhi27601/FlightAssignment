@@ -6,12 +6,12 @@ export const setFlights = (flights) => ({
   export const startSetFlights = () => {
     return (dispatch, getState) => {
       const uid = getState().auth.uid;
-      return  fetch(`https://api.spacexdata.com/v3/launches?limit=100`)
+      return  fetch(`https://api.spacexdata.com/v3/launches?limit=10`)
       // We get the API response and receive data in JSON format...
       .then((response) => response.json())
       // ...then we update the users state
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         dispatch(setFlights(data))
         
       })

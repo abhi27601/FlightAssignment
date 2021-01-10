@@ -9,7 +9,15 @@ exports[`should render expensedahboard page 1`] = `
       className="row p-4"
     >
       <Connect(Navigation) />
-      <Connect(FlightsCards) />
+      <Suspense
+        fallback={
+          <h1>
+            Loading Cards 
+          </h1>
+        }
+      >
+        <lazy />
+      </Suspense>
     </div>
   </div>
 </Fragment>
