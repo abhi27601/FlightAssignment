@@ -13,6 +13,7 @@
 4.  Webpack bundling
 
 # Flight Application
+
 Flight web app is Server-side application. Server is built on express.
 Fetching data is handled at client-side.
 This application uses Firebase API - google Auth for authentication.
