@@ -13,8 +13,9 @@
 4.  Webpack bundling
 
 # Flight Application
-Flight web app is Client-side application. Server is built on express.
-This application uses Firebase API google Auth for authentication.
+Flight web app is Server-side application. Server is built on express.
+Fetching data is handled at client-side.
+This application uses Firebase API - google Auth for authentication.
 Once you log in using gmail you will be presented with Dashboard of all the filght details.
 you are able to filter the flights using launch_Year,launch_success,land_success.
 Used Redux for storing auth state, flights , filters.
