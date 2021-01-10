@@ -11,7 +11,7 @@ const DashBoardPage = (props) => (
       <div className = 'container-fluid d-md-flex'>
       <div className="row p-4">
       <Navigation {...props} />
-      <Suspense fallback={<h1>Loading Cards </h1>} >
+      <Suspense fallback={ <img className='loader__image' src='../images/loader.gif' /> } >
       <FlightsCards />
       </Suspense>
      

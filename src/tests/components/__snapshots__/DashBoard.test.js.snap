@@ -11,9 +11,10 @@ exports[`should render expensedahboard page 1`] = `
       <Connect(Navigation) />
       <Suspense
         fallback={
-          <h1>
-            Loading Cards 
-          </h1>
+          <img
+            className="loader__image"
+            src="../images/loader.gif"
+          />
         }
       >
         <lazy />

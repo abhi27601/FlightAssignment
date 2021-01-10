@@ -7,14 +7,7 @@ const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// htmlwebpackplugin - is used to create a new html by adding the script tag automatically and gandle content hash ,
-// for caching control.
-//optimizecssassetplugin will minimize css,
-//terserplugin will minimize js its very similar to uglify
-//htmlwebpackplugin minimize option for minification of html as well
-// webpack merge is used to extend this prod config with common config 
-// Here it will create dist folder with .md5 hash creation in between name.
-// new OptimizeCssAssetsPlugin(),
+
 
 module.exports = merge(common, {
   mode: "production",
@@ -33,6 +26,7 @@ module.exports = merge(common, {
       new TerserPlugin(),
       new HtmlWebpackPlugin({
         template: "./src/template.html",
+        favicon:"./src/images/favicon.png",
         minify: {
           removeAttributeQuotes: true,
           collapseWhitespace: true,
@@ -46,6 +40,7 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(),
     new CssMinimizerPlugin()
   ],
+  devtool: "none",
   module: {
     rules: [
       {

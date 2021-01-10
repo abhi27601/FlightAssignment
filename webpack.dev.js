@@ -3,17 +3,6 @@ const common = require("./webpack.common");
 const { merge } = require("webpack-merge");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 
-//style loader is used to write style tag ,attach style into DOM
-// here it will not create dist folder as its written with webpack-dev-server
-/*process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-if (process.env.NODE_ENV === 'test'){
-console.log(process.env.NODE_ENV)
-}
-else {
-  console.log(process.env.NODE_ENV);
-}*/
-
-
 module.exports = merge(common,  {
   mode: "development",
   output: {
@@ -23,7 +12,8 @@ module.exports = merge(common,  {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/template.html"
+      template: "./src/template.html",
+      favicon:"./src/images/favicon.png",
     })
   ],
   module: {
